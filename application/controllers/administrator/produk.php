@@ -28,6 +28,9 @@ Class Produk extends CI_Controller {
     }
 
     public function add() {
+        if (isset($_POST['simpan'])) {
+            $this->action_to_create();
+        }
         $data = array(
             "title" => "Produk",
             "navigation_active" => "produk",
@@ -37,7 +40,92 @@ Class Produk extends CI_Controller {
     }
 
     public function action_to_create() {
+        $action = 1;
+        $nama_produk = $this->input->post('nama_produk');
+        $katalog_id = $this->input->post('katalog_id');
+        $stok = $this->input->post('stok');
+        $gambar = $this->input->post('gambar');
+        $harga_jual = $this->input->post('harga_jual');
+        $harga_coret = $this->input->post('harga_coret');
+        $deksripsi = $this->input->post('deskripsi');
+
+        $file_rename = strtolower(str_replace(" ", "_", $nama_produk)) . "_" . time();
         
+        $target_dir = "./assets/uploads/produk";
+        $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
+
+        $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        
+        if (empty($nama_produk)) {
+            $action = 0;
+            $this->session->set_flashdata('failed', 'Nama Produk harus diisi');
+            redirect('/administrator/produk/add');
+        }
+
+        if (empty($katalog_id)) {
+            $action = 0;
+            $this->session->set_flashdata('failed', 'Katalog harus dipilih');
+            redirect('/administrator/produk/add');
+        }
+
+        if (empty($stok)) {
+            $action = 0;
+            $this->session->set_flashdata('failed', 'Stok harus diisi');
+            redirect('/administrator/produk/add');
+        }
+
+        if (empty($gambar)) {
+            $action = 2;   
+        } else {
+            
+            if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
+                $action = 0;
+                $this->session->set_flashdata('failed', 'Tipe File Gambar : jpg / png / jpeg / gif');
+                redirect('/administrator/produk/add');
+            }
+        }
+
+        if (empty($harga_jual)) {
+            $action = 0;
+            $this->session->set_flashdata('failed', 'Harga Jual harus diisi');
+            redirect('/administrator/produk/add');
+        }
+
+        if ($action == 1) {
+            if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file_logo)) {
+                rename($target_file, $target_dir . $file_rename);
+                
+                $data_array = array(
+                    'katalog_id' => $katalog_id,
+                    'nama_produk' => $nama_produk,
+                    'stok' => $stok,
+                    'harga_jual' => $harga_jual,
+                    'harga_coret' => $harga_coret,
+                    'gambar' => $file_rename,
+                    'deskripsi' => $deksripsi,
+                    'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")
+                );
+                $this->produk_model->create($data_array);
+                $this->session->set_flashdata('success', 'Berhasil menambah data produk.');
+                redirect('/administrator/produk');
+            }
+        } else if ($action == 2) {    
+            $data_array = array(
+                'katalog_id' => $katalog_id,
+                'nama_produk' => $nama_produk,
+                'stok' => $stok,
+                'harga_jual' => $harga_jual,
+                'harga_coret' => $harga_coret,
+                'gambar' => 'img_product.jpg',
+                'deskripsi' => $deksripsi,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            );
+            $this->produk_model->create($data_array);
+            $this->session->set_flashdata('success', 'Berhasil menambah data produk.');
+            redirect('/administrator/produk');
+        }
     }
 
     public function edit($id) {

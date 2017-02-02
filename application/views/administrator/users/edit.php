@@ -10,7 +10,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">
                     <i class="fa fa-cubes"></i>
-                    Tambah | Daftar Users
+                    Edit | Daftar Users
                 </h1>
 			</div>
 		</div><!--/.row-->
@@ -24,25 +24,29 @@
 							FORM USERS
 						</div>
 						<div class="panel-body">
+							<?php if ($this->session->flashdata('failed')) { ?>
+								<div class="alert bg-danger" role="alert">
+									<?=$this->session->flashdata('failed')?>
+									<a href="" class="pull-right">
+										<span class="glyphicon glyphicon-remove"></span>
+									</a>
+								</div>
+							<?php } ?>
 							<div class="form-group">
 								<label>USERNAME</label>
-								<input type="text" name="username" class="form-control" placeholder="..." />
-							</div>
-                            <div class="form-group">
-								<label>PASSWORD</label>
-								<input type="password" name="password" class="form-control" placeholder="..." />
+								<input type="text" value="<?=$val['username']?>" name="username" class="form-control" placeholder="..." />
 							</div>
                             <div class="form-group">
 								<label>NAMA LENGKAP</label>
-								<input type="text" name="nama" class="form-control" placeholder="..." />
+								<input type="text" value="<?=$val['nama']?>" name="nama" class="form-control" placeholder="..." />
 							</div>
                             <div class="form-group">
 								<label>E-MAIL</label>
-								<input type="email" name="email" class="form-control" placeholder="..." />
+								<input type="email" value="<?=$val['email']?>" name="email" class="form-control" placeholder="..." />
 							</div>
                             <div class="form-group">
 								<label>PHONE</label>
-								<input type="text" name="phone" class="form-control" placeholder="..." />
+								<input type="text" value="<?=$val['phone']?>" name="phone" class="form-control" placeholder="..." />
 							</div>
 						</div>
 						<div class="panel-footer text-right">

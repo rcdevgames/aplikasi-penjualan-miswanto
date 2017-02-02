@@ -21,11 +21,20 @@
                         <i class="fa fa-table"></i>
                         TABEL PRODUK
 
-                        <a href="<?=base_url('/administrator/produk/add')?>" class="btn btn-primary btn-lg pull-right">
+                        <a href="<?=base_url('/administrator/produk/add')?>" class="btn btn-primary pull-right">
                             <i class="fa fa-plus"></i> TAMBAH
                         </a>
                     </div>
+
 					<div class="panel-body">
+                        <?php if ($this->session->flashdata('success')) { ?>
+                            <div class="alert bg-success" role="alert">
+	                            <?=$this->session->flashdata('success')?>
+	                            <a href="" class="pull-right">
+	                                <span class="glyphicon glyphicon-remove"></span>
+	                            </a>
+	                        </div>
+	                    <?php } ?>
 						<table id="table-data" class="display table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -41,33 +50,40 @@
                                 <tr>
                                     <th>GAMBAR</th>
                                     <th>PRODUK</th>
-                                    <th>STOK</th>
+                                    <th>KATALOG</th>
                                     <th>HARGA</th>
                                     <th>STATUS</th>
                                     <th></th>
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <?php foreach ($this->produk_model->all() as $val) { ?>
                                 <tr>
-                                    <td><img src="<?=base_url('/assets/theme/img/index3banner2.jpg')?>" width="80px" /></td>
-                                    <td>Produk Name One</td>
-                                    <td class="text-center">20</td>
-                                    <td class="text-right">Rp120.000</td>
+                                    <td>
+                                        <img src="<?=base_url('/assets/uploads/produk/'.$val['gambar'])?>" width="80px" /></td>
+                                    <td><?strtoupper($val['nama_produk'])?></td>
+                                    <td><?strtoupper($val['nama_katalog'])?></td>
+                                    <td>Rp<?$val['harga_jual']?>,-</td>
                                     <td class="text-center">
-                                        <span class="label label-success">OnStock</span>    
+                                        <?php if ($val['stok'] > 0) { ?>
+                                            <span class="label label-success">OnStock</span>    
+                                        <?php } else { ?>
+                                            <span class="label label-danger">Habis</span>
+                                        <?php } ?>
                                     </td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-xs btn-primary">
+                                        <a href="<?=base_url('/administrator/produk/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id_produk']))))?>" class="btn btn-xs btn-primary">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a href="" class="btn btn-xs btn-default">
+                                        <a href="<?=base_url('/administrator/produk/edit/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id_produk']))))?>" class="btn btn-xs btn-default">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-xs btn-danger">
+                                        <a href="<?=base_url('/administrator/produk/delete/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id_produk']))))?>" class="btn btn-xs btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>
                                 </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><img src="<?=base_url('/assets/theme/img/index3banner.jpg')?>" width="80px" /></td>
                                     <td>Produk Name Two</td>

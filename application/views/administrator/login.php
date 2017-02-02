@@ -21,10 +21,18 @@
 				<div class="login-panel panel panel-default">
 					<div class="panel-heading text-center">LOGIN</div>
 					<div class="panel-body">
+						<?php if ($this->session->flashdata('failed')) { ?>
+							<div class="alert bg-danger" role="alert">
+								<?=$this->session->flashdata('failed')?>
+								<a href="" class="pull-right">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</div>
+						<?php } ?>
 						<form role="form" action="" method="POST">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+									<input class="form-control" placeholder="Username" name="username" type="text" autofocus="">
 								</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Password" name="password" type="password">

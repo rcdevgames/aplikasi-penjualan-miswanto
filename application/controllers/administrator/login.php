@@ -17,11 +17,25 @@ Class Login extends CI_Controller {
     }
 
     public function action_to_login() {
-        $data_session = array(
-            "is_login" => true
-        );
-        $this->session->set_userdata($data_session);
-        redirect('/administrator/index');
+        $uname = $this->input->post('username');
+        $paswd = $this->input->post('password');
+        $data = $this->users_model->login($uname, $paswd);
+
+        if ($data) {
+            $data_session = array(
+                "id" => $this->encrypt->encode($data['id']),
+                "username" => $data['username'],
+                "nama" => $data['nama'],
+                "email" => $data['email'],
+                "phone" => $data['phone'],
+                "is_login" => true
+            );
+            $this->session->set_userdata($data_session);
+            redirect('/administrator/index');
+        } else {
+            $this->session->set_flashdata('failed', 'Username atau Password Salah');
+            redirect('/administrator/login');
+        }
     }
 
 }

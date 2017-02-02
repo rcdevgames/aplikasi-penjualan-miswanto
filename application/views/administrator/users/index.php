@@ -21,11 +21,20 @@
                         <i class="fa fa-table"></i>
                         TABEL USERS
 
-                        <a href="<?=base_url('/administrator/users/add.html')?>" class="btn btn-primary btn-lg pull-right">
+                        <a href="<?=base_url('/administrator/users/add.html')?>" class="btn btn-primary pull-right">
                             <i class="fa fa-plus"></i> TAMBAH
                         </a>
                     </div>
 					<div class="panel-body">
+                        <?php if ($this->session->flashdata('success')) { ?>
+                            <div class="alert bg-success" role="alert">
+                                <?=$this->session->flashdata('success')?>
+                                <a href="" class="pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>
+                        <?php } ?>
+
 						<table id="table-data" class="display table-stripped" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -46,31 +55,28 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <?php foreach ($data_users as $val) { ?>
                                 <tr>
-                                    <td>ADMINISTRATOR</td>
-                                    <td>administrator</td>
-                                    <td>administrator@admin.com</td>
-                                    <td class="text-center">03 JAN 2017, 09:30:00</td>
+                                    <td><?=strtoupper($val['nama'])?></td>
+                                    <td><?=strtoupper($val['username'])?></td>
+                                    <td><?=strtoupper($val['email'])?></td>
+                                    <td><?=$this->dateid->datetime_encode($val['created_at'])?></td>
                                     <td class="text-center">
+                                        <?php if ($val['id'] == 1) { ?>
                                         <label class="label label-warning">
                                             <i class="fa fa-exclamation-triangle"></i> WARNING!
                                         </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>MISWANTO</td>
-                                    <td>miswanto</td>
-                                    <td>miswanto@gmail.com</td>
-                                    <td class="text-center">03 JAN 2017, 09:30:00</td>
-                                    <td class="text-center">
-                                        <a href="<?=base_url('/administrator/users/add.html')?>" class="btn btn-xs btn-default">
+                                        <?php } else { ?>
+                                        <a href="<?=base_url('/administrator/users/edit/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id']))))?>" class="btn btn-default btn-xs">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-xs btn-danger">
+                                        <a href="<?=base_url('/administrator/users/delete/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id']))))?>" class="btn btn-danger btn-xs">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
+                                        <?php } ?>
                                     </td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
 					</div>

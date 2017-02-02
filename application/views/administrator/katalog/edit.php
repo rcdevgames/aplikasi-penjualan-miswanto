@@ -1,7 +1,8 @@
         <div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Katalog</li>
+				<li><a href="<?=base_url('/administrator/katalog.html')?>">Katalog</a></li>
+				<li class="active">Edit</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -9,16 +10,8 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">
                     <i class="fa fa-tags"></i>
-                    Katalog
+                    Edit | Katalog
                 </h1>
-                <?php if ($this->session->flashdata('failed')) { ?>
-				<div class="alert bg-danger" role="alert">
-					<?=$this->session->flashdata('failed')?>
-					<a href="" class="pull-right">
-						<span class="glyphicon glyphicon-remove"></span>
-					</a>
-				</div>
-				<?php } ?>
 			</div>
 		</div><!--/.row-->
 		
@@ -27,15 +20,15 @@
 				<form role="form" action="" method="POST">
 					<div class="form-group">
 						<label>NAMA KATALOG</label>
-						<input class="form-control" placeholder="Ex. Baju Kemeja" name="nama_katalog" id="nama_katalog">
+						<input value="<?=$find['nama_katalog']?>" class="form-control" placeholder="Ex. Baju Kemeja" name="nama_katalog" id="nama_katalog">
 					</div>
 					<div class="form-group">
 						<label>SLUG</label>
-						<input class="form-control" placeholder="Ex. baju-kemeja" name="slug" id="slug">
+						<input value="<?=$find['slug']?>" class="form-control" placeholder="Ex. baju-kemeja" name="slug" id="slug">
 					</div>
 					<div class="form-group">
 						<label>DESKRIPSI</label>
-						<textarea class="form-control" rows="5" name="deskripsi" id="deskripsi"></textarea>
+						<textarea class="form-control" rows="5" name="deskripsi" id="deskripsi"><?=$find['deskripsi']?></textarea>
 					</div>
 					<button type="submit" name="simpan" class="btn btn-primary">
 						<i class="fa fa-save"></i> SIMPAN
@@ -63,7 +56,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            	<?php foreach ($this->katalog_model->all() as $data) { ?>
+                                <?php foreach ($this->katalog_model->all() as $data) { ?>
                             	<tr>
                                     <td><?=strtoupper($data['nama_katalog'])?></td>
 									<td class="text-center">

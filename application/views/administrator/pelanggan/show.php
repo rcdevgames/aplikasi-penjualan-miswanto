@@ -26,23 +26,23 @@
                         <table class="table table-striped">
                             <tr>
                                 <td class="text-right" width="20%"><b>ID</b></td>
-                                <td width="1%"><b>:</b></td><td>#0192487</td>
+                                <td width="1%"><b>:</b></td><td>#<?=$val['id_pelanggan']?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>NAMA</b></td>
-                                <td width="1%"><b>:</b></td><td>MISWANTO</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($val['nama_pelanggan'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>TELP</b></td>
-                                <td width="1%"><b>:</b></td><td>081329123456</td>
+                                <td width="1%"><b>:</b></td><td><?=$val['phone']?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>EMAIL</b></td>
-                                <td width="1%"><b>:</b></td><td>miswanto@gmail.com</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($val['email'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>ALAMAT</b></td>
-                                <td width="1%"><b>:</b></td><td>ALAMAT</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($val['alamat'])?>,<br />KOTA <?=strtoupper($val['kota'])?>,<br />PROFINSI <?=strtoupper($val['profinsi'])?>, <br />KODE POS <?=strtoupper($val['kodepos'])?></td>
                             </tr>
                             <tr><td></td><td></td><td></td></tr>
                         </table>

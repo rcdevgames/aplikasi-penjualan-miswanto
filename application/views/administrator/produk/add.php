@@ -24,6 +24,15 @@
 							FORM PRODUK
 						</div>
 						<div class="panel-body">
+							<?php if ($this->session->flashdata('failed')) { ?>
+	                            <div class="alert bg-danger" role="alert">
+	                                <?=$this->session->flashdata('failed')?>
+	                                <a href="" class="pull-right">
+	                                    <span class="glyphicon glyphicon-remove"></span>
+	                                </a>
+	                            </div>
+	                        <?php } ?>
+
 							<div class="form-group">
 								<label>NAMA PRODUK</label>
 								<input type="text" name="nama_produk" class="form-control" placeholder="..." />
@@ -34,21 +43,21 @@
 										<label>KATALOG</label>
 										<select name="katalog_id" class="form-control">
 											<option>-- Pilih Katalog Produk --</option>
-											<option>Kaos</option>
-											<option>Sepatu</option>
+											
+											<?php foreach ($this->katalog_model->all() as $kat) { ?>
+											<option value="<?=$kat['id_katalog']?>"><?=strtoupper($kat['nama_katalog'])?></option>
+											<?php } ?>
+
 										</select>
 									</div>	
 									<div class="form-group">
 										<label>STOK</label>
 										<input type="text" name="stok" class="form-control" placeholder="..." />
-									</div>	
+									</div>
+									
 									<div class="form-group">
-										<label>STATUS</label>
-										<select name="katalog_id" class="form-control">
-											<option>-- Pilih Katalog Produk --</option>
-											<option selected="">New</option>
-											<option>Best Seller</option>
-										</select>
+										<label>GAMBAR</label>
+										<input type="file" name="gambar" class="form-control" placeholder="..." />
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -59,10 +68,6 @@
 									<div class="form-group">
 										<label>HARGA CORET / DISKON</label>
 										<input type="text" name="harga_coret" class="form-control" placeholder="..." />
-									</div>	
-									<div class="form-group">
-										<label>GAMBAR</label>
-										<input type="file" name="gambar" class="form-control" placeholder="..." />
 									</div>
 								</div>
 							</div>

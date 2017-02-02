@@ -29,7 +29,7 @@
 				<a class="navbar-brand" href="#"><span>ADMIN</span>APP</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href=""><i class="fa fa-user"></i>&nbsp; ADMINISTRATOR</a>
+						<a href=""><i class="fa fa-user"></i>&nbsp; <?=strtoupper($this->session->userdata('nama'))?></a>
 					</li>
 				</ul>
 			</div>

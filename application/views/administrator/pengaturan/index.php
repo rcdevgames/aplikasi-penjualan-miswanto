@@ -23,25 +23,50 @@
 							FORM PENGATURAN
 						</div>
 						<div class="panel-body">
+							<?php if ($this->session->flashdata('success')) { ?>
+	                            <div class="alert bg-success" role="alert">
+	                                <?=$this->session->flashdata('success')?>
+	                                <a href="" class="pull-right">
+	                                    <span class="glyphicon glyphicon-remove"></span>
+	                                </a>
+	                            </div>
+	                        <?php } ?>
+
+	                        <?php if ($this->session->flashdata('failed')) { ?>
+	                            <div class="alert bg-danger" role="alert">
+	                                <?=$this->session->flashdata('failed')?>
+	                                <a href="" class="pull-right">
+	                                    <span class="glyphicon glyphicon-remove"></span>
+	                                </a>
+	                            </div>
+	                        <?php } ?>
+
 							<div class="form-group">
 								<label>NAMA SITUS / TITLE</label>
-								<input type="text" name="title" class="form-control" placeholder="..." />
+								<input type="text" value="<?=$val['namasitus']?>" name="title" class="form-control" placeholder="..." />
 							</div>
                             <div class="form-group">
 								<label>META TAG</label>
-								<textarea name="meta_tag" class="form-control"></textarea>
+								<textarea name="meta_tag" class="form-control"><?=$val['metatag']?></textarea>
 							</div>
 							<div class="form-group">
 								<label>META DESKRIPSI</label>
-								<textarea name="meta_deskripsi" class="form-control" rows="5"></textarea>
+								<textarea name="meta_deskripsi" class="form-control" rows="5"><?=$val['metadeskripsi']?></textarea>
 							</div>
 							<div class="form-group">
 								<label>LOGO</label>
 								<input type="file" name="logo" class="form-control" placeholder="..." />
+								<br />
+								<?php if (file_exists("./assets/uploads/".$val['logo'])) { ?>
+									<img src="<?=base_url('/assets/uploads/'.$val['logo'])?>" alt="logo" width="80px" />
+								<?php } ?>
 							</div>
 							<div class="form-group">
 								<label>FAVICON</label>
 								<input type="file" name="favicon" class="form-control" placeholder="..." />
+								<?php if (file_exists("./assets/uploads/".$val['favicon'])) { ?>
+									<img src="<?=base_url('/assets/uploads/'.$val['favicon'])?>" alt="logo" width="80px" />
+								<?php } ?>
 							</div>
 						</div>
 						<div class="panel-footer text-right">
