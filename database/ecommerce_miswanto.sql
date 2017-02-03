@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Feb 2017 pada 09.55
--- Versi Server: 10.1.19-MariaDB
+-- Generation Time: Feb 03, 2017 at 01:28 PM
+-- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `katalog`
+-- Table structure for table `katalog`
 --
 
 CREATE TABLE `katalog` (
@@ -33,18 +33,10 @@ CREATE TABLE `katalog` (
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `katalog`
---
-
-INSERT INTO `katalog` (`id_katalog`, `nama_katalog`, `slug`, `deskripsi`) VALUES
-(1, 'Baju Kemeja', 'baju-kemeja', ''),
-(3, 'Sepatu', 'sepatu', '');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -54,7 +46,7 @@ CREATE TABLE `order` (
   `total_harga` double(16,0) NOT NULL,
   `status` enum('0','1','2') NOT NULL,
   `kirim_ke` text NOT NULL,
-  `terbaca` enum('0','1') NOT NULL,
+  `terbaca` enum('0','1','2') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,7 +54,7 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orderdetail`
+-- Table structure for table `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -78,18 +70,19 @@ CREATE TABLE `orderdetail` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orderkonfirm`
+-- Table structure for table `orderkonfirm`
 --
 
 CREATE TABLE `orderkonfirm` (
   `id_orkonfirm` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
+  `resi` varchar(16) NOT NULL,
   `metode` varchar(16) NOT NULL,
   `tujuan` varchar(16) NOT NULL,
   `atasnama` varchar(128) NOT NULL,
   `dari` varchar(16) NOT NULL,
   `rekening` varchar(32) NOT NULL,
-  `tanggal_tranfer` date NOT NULL,
+  `tanggal_transfer` date NOT NULL,
   `terbaca` enum('0','1') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -97,7 +90,7 @@ CREATE TABLE `orderkonfirm` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelanggan`
+-- Table structure for table `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -117,7 +110,7 @@ CREATE TABLE `pelanggan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengaturan`
+-- Table structure for table `pengaturan`
 --
 
 CREATE TABLE `pengaturan` (
@@ -130,23 +123,17 @@ CREATE TABLE `pengaturan` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pengaturan`
---
-
-INSERT INTO `pengaturan` (`id`, `namasitus`, `metatag`, `metadeskripsi`, `logo`, `favicon`, `updated_at`) VALUES
-(1, 'Ecoomerce', 'meta tagas (ex: Baju, Jual Kaos, Fashion, dll)', 'Ini contoh deskripsi sebagai demo dari aplikasi penjualan. projek ini untuk tugas kerja praktek', 'logo.jpg', 'favicon.ico', '2017-01-31 02:10:32');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `katalog_id` int(11) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
+  `permalink` varchar(255) NOT NULL,
   `stok` int(11) NOT NULL,
   `harga_jual` double(16,0) NOT NULL,
   `harga_coret` double(16,0) NOT NULL,
@@ -159,7 +146,7 @@ CREATE TABLE `produk` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -173,7 +160,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `phone`, `created_at`) VALUES
@@ -239,27 +226,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `katalog`
 --
 ALTER TABLE `katalog`
-  MODIFY `id_katalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_katalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `orderkonfirm`
 --
 ALTER TABLE `orderkonfirm`
-  MODIFY `id_orkonfirm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_orkonfirm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pengaturan`
 --
@@ -269,12 +256,12 @@ ALTER TABLE `pengaturan`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
