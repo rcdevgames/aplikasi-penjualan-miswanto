@@ -21,10 +21,6 @@
 					<div class="panel-heading">
                         <i class="fa fa-desktop"></i>
                         DETAIL KONFIRMASI
-
-                        <a href="" class="btn btn-primary pull-right" title="CETAK">
-                            <i class="fa fa-print"></i>
-                        </a>
                     </div>
 					<div class="panel-body">
 						<table class="table table-striped">
@@ -39,11 +35,6 @@
                             <tr>
                                 <td class="text-right" width="30%"><b>TELP</b></td>
                                 <td width="1%"><b>:</b></td><td><?=strtoupper($show['phone'])?></td>
-                            </tr>
-
-                            <tr>
-                                <td class="text-right" width="30%"><b>METODE PEMBAYARAN</b></td>
-                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['metode'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>BANK TUJUAN</b></td>

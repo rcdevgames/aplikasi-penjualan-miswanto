@@ -45,11 +45,6 @@
             </div>
           </div>
           <!-- Top Nav End -->
-          <div class="pull-right">
-            <form class="form-search top-search">
-              <input type="text" class="input-medium search-query" placeholder="Search Here…">
-            </form>
-          </div>
         </div>
       </div>
     </div>
@@ -59,27 +54,32 @@
       <div class="pull-right">
         <ul class="nav topcart pull-left">
           <li class="dropdown hover carticon ">
-            <a href="#" class="dropdown-toggle" > Keranjang Belanja <span class="label label-orange font14">1 Pesan</span> - Rp120.000 <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" > Keranjang Belanja <span class="label label-orange font14"><?=$this->cart->total_items()?> Pesan</span> - Rp<?=$this->cart->format_number($this->cart->total())?> <b class="caret"></b></a>
             <ul class="dropdown-menu topcartopen ">
               <li>
                 <table>
                   <tbody>
+                    <?php foreach ($this->cart->contents() as $itemHomeCart) { ?>
+
                     <tr>
-                      <td class="image"><a href="product/1.html"><img width="50" height="50" src="<?=base_url('/assets/theme/')?>img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                      <td class="name"><a href="product/1.html">MacBook</a></td>
-                      <td class="quantity">x&nbsp;1</td>
-                      <td class="total">Rp120.000</td>
+                      <td class="name" style="text-align:justify">
+                        <a href="<?=base_url($itemHomeCart['link'])?>">
+                        <?=(strlen($itemHomeCart['name']) > 12) ? substr(strtoupper($itemHomeCart['name']), 0, 12) . "..." : strtoupper($itemHomeCart['name'])?></a>
+                      </td>
+                      <td class="quantity">x&nbsp;<?=$itemHomeCart['qty']?></td>
+                      <td class="total">Rp<?=$this->cart->format_number($itemHomeCart['price'])?></td>
                       <td class="remove">
-                          <a href="#" title="Hapus"><i class="icon-remove"></i></a>
+                          <a href="" onclick="remove_item_cart('<?=base_url('remove_item_cart/'.md5($itemHomeCart['id']))?>')" title="Hapus"><i class="icon-remove"></i></a>
                       </td>
                     </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
                 <table>
                   <tbody>
                     <tr>
                       <td class="textright"><b>TOTAL :</b></td>
-                      <td class="textright">Rp120.000</td>
+                      <td class="textright">Rp<?=$this->cart->format_number($this->cart->total())?></td>
                     </tr>
                   </tbody>
                 </table>
@@ -103,53 +103,6 @@
 
 <!-- Footer -->
 <footer id="footer">
-  <section class="footersocial">
-    <div class="container">
-      <div class="row">
-        <div class="span3 aboutus">
-          <h2>ABOUT US</h2>
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>
-            <br>
-            t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-        </div>
-        <div class="span3 contact">
-          <h2>Contact Us </h2>
-          <ul>
-            <li class="phone"> +62 821 123456</li>
-            <li class="mobile"> +6285 123 6890123</li>
-            <li class="email"> distri@email.com</li>
-          </ul>
-        </div>
-        <div class="span3 twitter">
-          <h2>Twitter </h2>
-          <div id="twitter">
-          </div>
-        </div>
-        <div class="span3 facebook">
-          <h2>Facebook </h2>
-          <div id="fb-root"></div>
-          <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-          <script type="text/javascript">FB.init("");</script>
-          <script type="text/javascript">
-              document.write('<fb:fan profile_id="80655071208" stream="0"	connections="6"	logobar="0" height="190px"	width="200"css="css/fb.css"></fb:fan> ');
-          </script>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="footerlinks">
-    <div class="container">
-      <div id="footersocial">
-        <a href="#" title="Facebook" class="facebook">Facebook</a>
-        <a href="#" title="Twitter" class="twitter">Twitter</a>
-        <a href="#" title="Linkedin" class="linkedin">Linkedin</a>
-        <a href="#" title="rss" class="rss">rss</a>
-        <a href="#" title="Googleplus" class="googleplus">Googleplus</a>
-        <a href="#" title="Skype" class="skype">Skype</a>
-        <a href="#" title="Flickr" class="flickr">Flickr</a>
-      </div>
-    </div>
-  </section>
   <section class="copyrightbottom">
     <div class="container">
       <div class="row">
@@ -159,6 +112,14 @@
     </div>
   </section>
 </footer>
+
+<script type="text/javascript">
+  function remove_item_cart(url) {
+    $.get(url, function(data) {
+      window.reload();
+    });
+  }
+</script>
 
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<?=base_url('/assets/theme/js/jquery.js')?>"></script>

@@ -1,45 +1,42 @@
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-     <!--  breadcrumb --> 
-      <ul class="breadcrumb">
-        <li>
-          <a href="#">Home</a>
-          <span class="divider">/</span>
-        </li>
-        <li class="active">Register Account</li>
-      </ul>
-      <div class="row">        
+     <div class="row">        
         <!-- Register Account-->
         <div class="span9">
-          <h1 class="heading1"><span class="maintext">Change Password</span></h1>
-          <form class="form-horizontal">
-            <h3 class="heading3">Your Password Changed</h3>
+          <h1 class="heading1"><span class="maintext">UBAH PASSWORD</span></h1>
+          <?php if ($this->session->flashdata('failed')) { ?>
+            <span style="color:red"><?=$this->session->flashdata('failed')?></span>
+          <?php } ?>
+          <?php if ($this->session->flashdata('success')) { ?>
+            <span style="color:green"><?=$this->session->flashdata('success')?></span>
+          <?php } ?>
+          <form action="" method="post" class="form-horizontal">
             <div class="registerbox">
               <fieldset>
                 <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> Old Password:</label>
+                  <label  class="control-label"><span class="red">*</span> Password Lama:</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="password" name="password_lama" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> New Password:</label>
+                  <label  class="control-label"><span class="red">*</span> Password Baru:</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="password" name="password_baru" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> LPassword Confirm::</label>
+                  <label  class="control-label"><span class="red">*</span> Password Konfirmasi:</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="password" name="password_konfirmasi" class="input-xlarge">
                   </div>
                 </div>
               </fieldset>
             </div>
             <hr />
             <div class="pull-right">
-              <input type="Submit" class="btn btn-orange" value="Save">
+              <input type="Submit" name="change_password" class="btn btn-orange" value="UBAH PASSWORD">
             </div>
           </form>
           <div class="clearfix"></div>
@@ -47,38 +44,7 @@
         </div>        
         <!-- Sidebar Start-->
         <aside class="span3">
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Account</span></h2>
-            <ul class="nav nav-list categories">
-              <li>
-                <a href="#"> My Account</a>
-              </li>
-              <li>
-                <a href="#">Edit Account</a>
-              </li>
-              <li>
-                <a href="#">Password</a>
-              </li>
-              <li>
-                <a href="#">Wish List</a>
-              </li>
-              <li><a href="#">Order History</a>
-              </li>
-              <li><a href="#">Downloads</a>
-              </li>
-              <li><a href="#">Returns</a>
-              </li>
-              <li>
-                <a href="#"> Transactions</a>
-              </li>
-              <li>
-                <a href="category.html">Newsletter</a>
-              </li>
-              <li>
-                <a href="category.html">Logout</a>
-              </li>
-            </ul>
-          </div>
+          <?php $this->load->view('/pages/partials/navigation_akun_partials'); ?>
         </aside>
         <!-- Sidebar End-->
       </div>

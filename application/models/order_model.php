@@ -24,15 +24,31 @@ Class Order_model extends CI_Model {
         return $data->row_array();
     }
 
-    public function count_unread() {
-        $this->db->select('COUNT(*) AS total');
-        $this->db->where('terbaca', 0);
+    public function find_by_resi($resi) {
+        $this->db->where('resi', $resi);
         $data = $this->db->get('order');
         return $data->row_array();
     }
 
+    public function where($data = array()) {
+
+        foreach ($data as $k => $v) {
+            $this->db->where($k, $v);
+        }
+
+        $data = $this->db->get('order');
+        return $data->result_array();
+    }
+
+    public function count_unread() {
+        $this->db->where('status', '0');
+        $data = $this->db->get('order');
+        return $data->num_rows();
+    }
+
     public function create($data = array()) {
         $this->db->insert('order', $data);
+        return $this->db->insert_id();
     }
 
     public function update($id, $data = array()) {

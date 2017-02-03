@@ -1,159 +1,81 @@
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-     <!--  breadcrumb --> 
-      <ul class="breadcrumb">
-        <li>
-          <a href="#">Home</a>
-          <span class="divider">/</span>
-        </li>
-        <li class="active">Register Account</li>
-      </ul>
       <div class="row">        
-        <!-- Register Account-->
         <div class="span9">
-          <h1 class="heading1"><span class="maintext">Register Account</span><span class="subtext">Register Your details with us</span></h1>
-          <form class="form-horizontal">
-            <h3 class="heading3">Your Personal Details</h3>
+          <h1 class="heading1"><span class="maintext">DAFTAR MEMBER</span></h1>
+          <?php if ($this->session->flashdata('failed')) { ?>
+            <span style="color:red"><?=$this->session->flashdata('failed')?></span>
+          <?php } ?>
+          <?php if ($this->session->flashdata('success')) { ?>
+            <span style="color:green"><?=$this->session->flashdata('success')?></span>
+          <?php } ?>
+          <form action="" method="post" class="form-horizontal">
+            <h3 class="heading3">DETAIL PERSONAL MEMBER</h3>
             <div class="registerbox">
               <fieldset>
                 <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> First Name:</label>
+                  <label class="control-label"><span class="red">*</span> NAMA PELANGGAN :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="nama_pelanggan" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Last Name:</label>
+                  <label class="control-label"><span class="red">*</span> EMAIL :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="email" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Email:</label>
+                  <label class="control-label"><span class="red">*</span> HP / TELEPON :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Telephone:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label"> Fax:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="phone" class="input-xlarge">
                   </div>
                 </div>
               </fieldset>
             </div>
-            <h3 class="heading3">Your Address</h3>
+            <h3 class="heading3">DETAIL ALAMAT MEMBER</h3>
             <div class="registerbox">
               <fieldset>
                 <div class="control-group">
-                  <label class="control-label"> Company:</label>
+                  <label class="control-label"><span class="red">*</span> ALAMAT :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="alamat" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Last Name:</label>
+                  <label class="control-label"><span class="red">*</span> KOTA :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="kota" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Address 1:</label>
+                  <label class="control-label"><span class="red">*</span> PROFINSI :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="text" name="profinsi" class="input-xlarge">
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label"> Address 2:</label>
+                  <label class="control-label"><span class="red">*</span> KODE POS :</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">
-                    <span class="red">*</span>City:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">
-                    <span class="red">*</span>Post Code:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label for="select01" class="control-label">
-                    <span class="red">*</span>Country:</label>
-                  <div class="controls">
-                    <select id="select01" class="span3">
-                      <option>Country:</option>
-                      <option>United Kindom</option>
-                      <option>United States</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">
-                    <span class="red">*</span>Region / State:</label>
-                  <div class="controls">
-                    <select id="select02" class="span3">
-                      <option>Region / State:</option>
-                      <option>Angus</option>
-                      <option>highlands</option>
-                    </select>
+                    <input type="text" name="kodepos" class="input-xlarge">
                   </div>
                 </div>
               </fieldset>
             </div>
-            <h3 class="heading3">Your Password</h3>
+            <h3 class="heading3">DETAIL PASSWORD MEMBER</h3>
             <div class="registerbox">
               <fieldset>
                 <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> Password:</label>
+                  <label  class="control-label"><span class="red">*</span> PASSWORD:</label>
                   <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> LPassword Confirm::</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                    <input type="password" name="password" class="input-xlarge">
                   </div>
                 </div>
               </fieldset>
             </div>
-            <h3 class="heading3">Newsletter</h3>
-            <div class="registerbox">
-              <fieldset>
-                <div class="control-group">
-                  <label class="control-label">Subscribe:</label>
-                  <div class="controls">
-                    <label class="checkbox inline">
-                      <input type="checkbox" value="option1" >
-                      Yes </label>
-                    <label class="checkbox inline">
-                      <input type="checkbox" value="option2" >
-                      No </label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-            <div class="pull-right">
-              <label class="checkbox inline">
-                <input type="checkbox" value="option2" >
-              </label>
-              I have read and agree to the <a href="#" >Privacy Policy</a>
-              &nbsp;
-              <input type="Submit" class="btn btn-orange" value="Continue">
+            <div class="span5">
+              <input type="submit" name="register" class="btn btn-orange pull-right" value="DAFTAR MEMBER">
             </div>
           </form>
           <div class="clearfix"></div>
@@ -161,38 +83,7 @@
         </div>        
         <!-- Sidebar Start-->
         <aside class="span3">
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Account</span></h2>
-            <ul class="nav nav-list categories">
-              <li>
-                <a href="#"> My Account</a>
-              </li>
-              <li>
-                <a href="#">Edit Account</a>
-              </li>
-              <li>
-                <a href="#">Password</a>
-              </li>
-              <li>
-                <a href="#">Wish List</a>
-              </li>
-              <li><a href="#">Order History</a>
-              </li>
-              <li><a href="#">Downloads</a>
-              </li>
-              <li><a href="#">Returns</a>
-              </li>
-              <li>
-                <a href="#"> Transactions</a>
-              </li>
-              <li>
-                <a href="category.html">Newsletter</a>
-              </li>
-              <li>
-                <a href="category.html">Logout</a>
-              </li>
-            </ul>
-          </div>
+          <?php $this->load->view('/pages/partials/navigation_akun_partials'); ?>
         </aside>
         <!-- Sidebar End-->
       </div>

@@ -30,7 +30,7 @@ Class Konfirmasi extends CI_Controller {
     }
 
     public function action_to_update_terbaca($id) {
-        $this->orderkonfirm_model->update($id, ['terbaca' => 1]);
+        $this->orderkonfirm_model->update($id, ['terbaca' => '1']);
     }
 
     public function delete($id) {

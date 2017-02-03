@@ -63,7 +63,7 @@
                                     </td>
                                     <td class="text-center"><?=$this->dateid->date_encode($data['created_at'])?></td>
                                     <td class="text-center">
-                                        <a href="<?=base_url('/administrator/order/send_produk/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_orkonfirm']))).'.html')?>" class="btn btn-xs btn-info">
+                                        <a title="UPDATE TERKIRIM" href="<?=base_url('/administrator/order/send_produk/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_order']))).'.html')?>" class="btn btn-xs btn-info">
                                             <i class="fa fa-upload"></i>
                                         </a>
                                         <a href="<?=base_url('/administrator/order/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_order']))).'.html')?>" class="btn btn-xs btn-default">

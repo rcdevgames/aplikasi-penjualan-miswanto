@@ -26,7 +26,6 @@
                             <thead>
                                 <tr>
                                     <th>RESI</th>
-                                    <th>METHODE</th>
                                     <th>TUJUAN</th>
                                     <th>REKENING</th>
                                     <th>ATAS NAMA</th>
@@ -37,7 +36,6 @@
                             <tfoot>
                                 <tr>
                                     <th>RESI</th>
-                                    <th>METHODE</th>
                                     <th>TUJUAN</th>
                                     <th>REKENING</th>
                                     <th>ATAS NAMA</th>
@@ -48,12 +46,11 @@
                             <tbody>
                                 <?php foreach ($this->orderkonfirm_model->all() as $data) { ?>
                                 <tr>
-                                    <td class="text-center">#<?$data['resi']?></td>
-                                    <td><?=strtoupper($data['metode'])?></td>
+                                    <td class="text-center">#<?=$data['resi']?></td>
                                     <td><?=strtoupper($data['tujuan'])?></td>
                                     <td class="text-center"><?=strtoupper($data['rekening'])?></td>
                                     <td><?=strtoupper($data['atasnama'])?></td>
-                                    <td class="text-center"><?=$this->dateid->date_encode($data['tanggal_tranfer'])?></td>
+                                    <td class="text-center"><?=$this->dateid->date_encode($data['tanggal_transfer'])?></td>
                                     <td class="text-center">
                                         <a href="<?=base_url('/administrator/konfirmasi/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_orkonfirm']))).'.html')?>" class="btn btn-xs btn-default">
                                             <i class="fa fa-search"></i>

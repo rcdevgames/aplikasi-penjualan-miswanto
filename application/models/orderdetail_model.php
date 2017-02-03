@@ -29,6 +29,7 @@ Class Orderdetail_model extends CI_Model {
             $this->db->where($k, $v);
         }
 
+        $this->db->join('produk', 'id_produk=produk_id');
         $data = $this->db->get('orderdetail');
         return $data->result_array();
     }

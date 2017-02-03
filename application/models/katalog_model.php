@@ -22,6 +22,16 @@ Class Katalog_model extends CI_Model {
         return $data->row_array();
     }
 
+    public function where($data_where = array()) {
+
+        foreach ($data_where as $k => $v) {
+            $this->db->where($k, $v);
+        }
+
+        $data = $this->db->get('katalog');
+        return $data->row_array();
+    }
+
     public function create($data = array()) {
         $this->db->insert("katalog", $data);
         return $this->db->insert_id();

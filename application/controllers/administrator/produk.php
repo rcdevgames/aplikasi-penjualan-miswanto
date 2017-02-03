@@ -50,6 +50,8 @@ Class Produk extends CI_Controller {
         $harga_coret = $this->input->post('harga_coret');
         $deksripsi = $this->input->post('deskripsi');
 
+        $permalink = strtolower(str_replace(" ", "-", $nama_produk));
+
         $file_rename = strtolower(str_replace(" ", "_", $nama_produk)) . "_" . time() . ".jpg";
         
         $target_dir = "./assets/uploads/produk/";
@@ -99,6 +101,7 @@ Class Produk extends CI_Controller {
                 $data_array = array(
                     'katalog_id' => $katalog_id,
                     'nama_produk' => $nama_produk,
+                    'permalink' => $permalink,
                     'stok' => $stok,
                     'harga_jual' => $harga_jual,
                     'harga_coret' => $harga_coret,
@@ -115,6 +118,7 @@ Class Produk extends CI_Controller {
             $data_array = array(
                 'katalog_id' => $katalog_id,
                 'nama_produk' => $nama_produk,
+                'permalink' => $permalink,
                 'stok' => $stok,
                 'harga_jual' => $harga_jual,
                 'harga_coret' => $harga_coret,
@@ -152,6 +156,8 @@ Class Produk extends CI_Controller {
         $harga_coret = $this->input->post('harga_coret');
         $deksripsi = $this->input->post('deskripsi');
 
+        $permalink = strtolower(str_replace(" ", "-", $nama_produk));
+
         $file_rename = strtolower(str_replace(" ", "_", $nama_produk)) . "_" . time() . ".jpg";
         
         $target_dir = "./assets/uploads/produk/";
@@ -201,6 +207,7 @@ Class Produk extends CI_Controller {
                 $data_array = array(
                     'katalog_id' => $katalog_id,
                     'nama_produk' => $nama_produk,
+                    'permalink' => $permalink,
                     'stok' => $stok,
                     'harga_jual' => $harga_jual,
                     'harga_coret' => $harga_coret,
@@ -217,6 +224,7 @@ Class Produk extends CI_Controller {
             $data_array = array(
                 'katalog_id' => $katalog_id,
                 'nama_produk' => $nama_produk,
+                'permalink' => $permalink,
                 'stok' => $stok,
                 'harga_jual' => $harga_jual,
                 'harga_coret' => $harga_coret,

@@ -1,94 +1,49 @@
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-     <!--  breadcrumb --> 
-      <ul class="breadcrumb">
-        <li>
-          <a href="#">Home</a>
-          <span class="divider">/</span>
-        </li>
-        <li class="active">Daftar Pemesanan</li>
-      </ul>
       <div class="row">
         <!-- My Account-->
         <div class="span9">
             <h1 class="heading1">
-                <span class="maintext">Daftar Pemesanan</span><span class="subtext">Informasi pemesanan yang telah dilakukan</span>
+                <span class="maintext">DAFTAR PEMESANAN</span>
             </h1>        
-            
-            <div class="checkoutsteptitle">Pesan Pada : 29 Dec 2016 (TOTAL : Rp120.000)<a class="modify">Modify</a></div>
-            <div class="checkoutstep">
-                <div class="cart-info">
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                        <th class="image">Image</th>
-                        <th class="name">Product Name</th>
-                        <th class="model">Model</th>
-                        <th class="quantity">Quantity</th>
-                        <th class="price">Unit Price</th>
-                        <th class="total">Total</th>
-                        </tr>
-                        <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="<?=base_url('/assets/theme/')?>img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-                        <td  class="name"><a href="#">Jeans</a></td>
-                        <td class="model">My Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-                            &nbsp;
-                            <a href="#"><img class="tooltip-test" data-original-title="Update" src="<?=base_url('/assets/theme/')?>img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="<?=base_url('/assets/theme/')?>img/remove.png" alt=""></a></td>
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="pagination pull-right">
-              <ul>
-                <li><a href="#">Prev</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-              </ul>
-            </div>
+
+              <?php foreach ($this->order_model->where(['status' => '2']) as $order_beranda) { ?>
+              
+              <div class="checkoutsteptitle">PESAN PADA : <?=$this->dateid->date_encode($order_beranda['created_at'])?> (TOTAL : Rp<?=$this->cart->format_number($order_beranda['total_harga'])?>,-)<a class="modify">Modify</a></div>
+              <div class="checkoutstep">
+                  <div class="cart-info">
+                      <table class="table table-striped table-bordered">
+                          <tr>
+                            <th class="image">GAMBAR</th>
+                            <th class="name">PRODAK NAMA</th>
+                            <th class="quantity">QTY</th>
+                            <th class="price">HARGA</th>
+                            <th class="total">SUBTOTAL</th>
+                          </tr>
+                          <?php foreach ($this->orderdetail_model->where(["order_id" => $order_beranda['id_order']]) as $itemOrder) { ?>
+                            <tr>
+                              <td class="image">
+                                <img title="<?=$itemOrder['nama_produk']?>" alt="<?=$itemOrder['nama_produk']?>" src="<?=base_url('/assets/uploads/produk/'.$itemOrder['gambar'])?>" height="50" width="50">
+                              </td>
+                              <td  class="name"><?=$itemOrder['nama_produk']?></td>
+                              <td class="quantity"><?=$itemOrder['qty']?></td>
+                              <td class="price">Rp<?=$this->cart->format_number($itemOrder['produk_harga'])?></td>
+                              <td class="total">Rp<?=$this->cart->format_number($itemOrder['subtotal'])?></td>
+                            </tr>
+                          <?php } ?>
+                      </table>
+                  </div>
+              </div>
+              <hr />
+
+              <?php } ?>
+
         </div>
         
         <!-- Sidebar Start-->
           <aside class="span3">
-            <div class="sidewidt">
-              <h2 class="heading2"><span>Account</span></h2>
-              <ul class="nav nav-list categories">
-                <li>
-                  <a href="#"> My Account</a>
-                </li>
-                <li>
-                  <a href="#">Edit Account</a>
-                </li>
-                <li>
-                  <a href="#">Password</a>
-                </li>
-                <li>
-                  <a href="#">Wish List</a>
-                </li>
-                <li><a href="#">Order History</a>
-                </li>
-                <li><a href="#">Downloads</a>
-                </li>
-                <li><a href="#">Returns</a>
-                </li>
-                <li>
-                  <a href="#"> Transactions</a>
-                </li>
-                <li>
-                  <a href="category.html">Newsletter</a>
-                </li>
-                <li>
-                  <a href="category.html">Logout</a>
-                </li>
-              </ul>
-            </div>
+            <?php $this->load->view('/pages/partials/navigation_akun_partials'); ?>
           </aside>
         <!-- Sidebar End-->
       </div>

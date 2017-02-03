@@ -19,12 +19,15 @@ Class Order extends CI_Controller {
     }
 
     public function show($id) {
-        $this->action_to_update_status($id, 1);
+        $data_find = $this->order_model->find($id);
+        if ($data_find['status'] == '0') {
+            $this->action_to_update_status($id, 1);
+        }
         $data = array(
             "title" => "Order",
             "navigation_active" => "order",
             "container" => "/administrator/order/show",
-            "show" => $this->order_model->find($id)
+            "show" => $data_find
         );
         $this->load->view("/administrator/app", $data);
     }
@@ -32,11 +35,11 @@ Class Order extends CI_Controller {
     public function send_produk($id) {
         $this->action_to_update_status($id, 2);
         $this->session->set_flashdata('success', "Berhasil mengubah staus data order terkirim!!!");
-        redirect('/administrator/order.html');
+        redirect('/administrator/order');
     }
 
     public function action_to_update_status($id, $status) {
-        $this->order_model->update($id, ['terbaca'=> $status]);
+        $this->order_model->update($id, ['status' => "$status"]);
     }
 
     public function delete($id) {

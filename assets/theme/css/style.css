@@ -212,7 +212,9 @@ ul.rate li.off { background-position:left -24px }
 ul.productpagecart {  margin-top:20px; margin-left:0px; display:inline-block;}
 ul.productpagecart li {display:inline-block; background: url(../img/productpageicon.png) no-repeat 0 0 ;  margin-right:10px; height:66px}
 .productpagecart a {background:#F25C27 url(../img/productpageicon.png) no-repeat 0 0 ; color:#fff; padding:15px 15px 15px 60px; font-size:18px;}
+.productpagecart button {background:#F25C27 url(../img/productpageicon.png) no-repeat 0 0 ; color:#fff; padding:15px 15px 15px 60px; font-size:18px;; border:0}
 .productpagecart li a.cart {background-position:10px 12px}
+.productpagecart li button.cart {background-position:10px 12px}
 .productpagecart li a.wish {background-position:10px -51px}
 .productpagecart li a.comare {background-position:10px -126px}
 .productpagecart li a:hover {background-color: #d8420e}
@@ -404,7 +406,7 @@ ul.listoption6 li { background: url("../img/list6.png") no-repeat scroll 0 10px;
 .infomsg2 { background-color: #FFFFFF; background-position: 8px 5px; border: 1px solid #AFD3F2; }
 a.clostalert { background: url("../img/messages.png") no-repeat scroll 0 -310px transparent; cursor: pointer; height: 15px; overflow: hidden; position: absolute; right: 5px; text-indent: 9999px; top: 5px; width: 15px; }
 /* Footer */
-#footer { margin-top:40px }
+#footer { margin-top:40px;}
 #footer ul { margin:0px; padding:0px; list-style:none }
 #footer ul li { list-style:none }
 #footer .info ul li:last-child { background:none }

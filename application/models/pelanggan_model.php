@@ -22,6 +22,13 @@ Class Pelanggan_model extends CI_Model {
         return $data->row_array();
     }
 
+    public function login($email, $password) {
+        $this->db->where('email', $email);
+        $this->db->where('password', md5($password));
+        $data = $this->db->get('pelanggan');
+        return $data->row_array();
+    }
+
     public function where($data = array()) {
 
         foreach ($data as $k => $v) {
@@ -34,6 +41,7 @@ Class Pelanggan_model extends CI_Model {
 
     public function create($data = array()) {
         $this->db->insert('pelanggan', $data);
+        return $this->db->insert_id();
     }
 
     public function update($id, $data = array()) {

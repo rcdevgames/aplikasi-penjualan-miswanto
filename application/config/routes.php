@@ -8,6 +8,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = "/app/login";
 $route['daftar'] = "/app/register";
 $route['keranjang_belanja'] = "/app/shopping_cart";
+$route['add_to_cart/(:any)'] = "/app/add_to_cart/$1";
+$route['remove_item_cart/(:any)'] = "/app/remove_item_cart/$1";
+$route['update_item_cart/(:any)'] = "/app/update_item_cart/$1";
 
 $route['checkout'] = "/app/checkout";
 $route['checkout/detail_pembeli'] = "app/checkout_billing_details";
@@ -16,6 +19,7 @@ $route['checkout/detail_pesanan'] = "app/checkout_order_details";
 
 $route['detail_akun'] = "/app/my_account";
 $route['daftar_pemesanan'] = "app/order_list";
+$route['konfirmasi_pembayaran'] = "app/payments_confirmation";
 $route['ubah_akun'] = "/app/edit_account";
 $route['ubah_password'] = "app/change_password";
 $route['logout'] = "/app/logout";
