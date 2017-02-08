@@ -24,6 +24,13 @@ Class Order_model extends CI_Model {
         return $data->row_array();
     }
 
+    public function count_unread() {
+        $this->db->select('COUNT(*) AS total');
+        $this->db->where('terbaca', 0);
+        $data = $this->db->get('order');
+        return $data->row_array();
+    }
+
     public function create($data = array()) {
         $this->db->insert('order', $data);
     }

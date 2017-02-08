@@ -30,42 +30,37 @@
 						<table class="table table-striped">
                             <tr>
                                 <td class="text-right" width="30%"><b>NO RESI</b></td>
-                                <td width="1%"><b>:</b></td><td>#0192487</td>
+                                <td width="1%"><b>:</b></td><td>#<?=$show['resi']?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>PEMBELI</b></td>
-                                <td width="1%"><b>:</b></td><td>MISWANTO</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['nama_pelanggan'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>TELP</b></td>
-                                <td width="1%"><b>:</b></td><td>081329123456</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['phone'])?></td>
                             </tr>
 
                             <tr>
                                 <td class="text-right" width="30%"><b>METODE PEMBAYARAN</b></td>
-                                <td width="1%"><b>:</b></td><td>TRANSFER</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['metode'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>BANK TUJUAN</b></td>
-                                <td width="1%"><b>:</b></td><td>MANDIRI</td>
-                            </tr>
-                            <tr>
-                                <td class="text-right" width="30%"><b>NO REKENING</b></td>
-                                <td width="1%"><b>:</b></td><td>13912907319089</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['tujuan'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>REKENING PENGIRIM</b></td>
-                                <td width="1%"><b>:</b></td><td>13912790710390</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['rekening'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>ATAS NAMA</b></td>
-                                <td width="1%"><b>:</b></td><td>MISWANTO</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['atasnama'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="30%"><b>WAKTU PEMBAYARAN</b></td>
-                                <td width="1%"><b>:</b></td><td>05 JAN 2017 08:34:23</td>
+                                <td width="1%"><b>:</b></td><td><?=$this->dateid->datetime_encode($show['created_at'])?></td>
                             </tr>
-                            <tr><td></td><td></td><td></td></tr>
                         </table>
 					</div>
 				</div>

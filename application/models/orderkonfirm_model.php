@@ -26,7 +26,7 @@ Class Orderkonfirm_model extends CI_Model {
         $this->db->select('COUNT(*) AS total');
         $this->db->where('terbaca', 0);
         $data = $this->db->get('orderkonfirm');
-        return $data;
+        return $data->row_array();
     }
 
     public function create($data = array()) {

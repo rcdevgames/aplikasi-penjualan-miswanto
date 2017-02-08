@@ -35,12 +35,13 @@
 	                            </a>
 	                        </div>
 	                    <?php } ?>
-						<table id="table-data" class="display table-bordered" cellspacing="0" width="100%">
+
+                        <table id="table-data" class="display table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th width="80px">GAMBAR</th>
                                     <th>PRODUK</th>
-                                    <th>STOK</th>
+                                    <th>KATALOG</th>
                                     <th>HARGA</th>
                                     <th>STATUS</th>
                                     <th></th>
@@ -61,9 +62,9 @@
                                 <tr>
                                     <td>
                                         <img src="<?=base_url('/assets/uploads/produk/'.$val['gambar'])?>" width="80px" /></td>
-                                    <td><?strtoupper($val['nama_produk'])?></td>
-                                    <td><?strtoupper($val['nama_katalog'])?></td>
-                                    <td>Rp<?$val['harga_jual']?>,-</td>
+                                    <td><?=strtoupper($val['nama_produk'])?></td>
+                                    <td><?=strtoupper($val['nama_katalog'])?></td>
+                                    <td>Rp<?=$val['harga_jual']?>,-</td>
                                     <td class="text-center">
                                         <?php if ($val['stok'] > 0) { ?>
                                             <span class="label label-success">OnStock</span>    
@@ -84,26 +85,6 @@
                                     </td>
                                 </tr>
                                 <?php } ?>
-                                <tr>
-                                    <td><img src="<?=base_url('/assets/theme/img/index3banner.jpg')?>" width="80px" /></td>
-                                    <td>Produk Name Two</td>
-                                    <td class="text-center">15</td>
-                                    <td class="text-right">Rp110.000</td>
-                                    <td class="text-center">
-                                        <span class="label label-danger">Habis</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="" class="btn btn-xs btn-primary">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-default">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
 					</div>

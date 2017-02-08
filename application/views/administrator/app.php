@@ -60,14 +60,14 @@
 			<li <?php if ($navigation_active == "order") { echo 'class="active"'; } ?>>
 				<a href="<?=base_url('/administrator/order.html')?>">
 					<i class="fa fa-shopping-cart"></i>&nbsp; DAFTAR ORDER 
-					<span class="badge pull-right">3</span>
+					<span class="badge pull-right"><?=$this->order_model->count_unread()['total']?></span>
 				</a>
 			</li>
 
 			<li <?php if ($navigation_active == "konfirmasi") { echo 'class="active"'; } ?>>
 				<a href="<?=base_url('/administrator/konfirmasi.html')?>">
 					<i class="fa fa-envelope"></i>&nbsp; KONFIRMASI ORDER
-					<span class="badge pull-right">0</span>
+					<span class="badge pull-right"><?=$this->orderkonfirm_model->count_unread()['total']?></span>
 				</a>
 			</li>
 
@@ -99,7 +99,7 @@
 
 	</div><!--/.sidebar-->
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
 		<?php $this->load->view($container); ?>
 	</div>	<!--/.main-->
 

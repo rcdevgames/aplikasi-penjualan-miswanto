@@ -3,6 +3,13 @@
 class Dateid 
 {
 
+	public function date_encode($date) {
+		$exf = explode(" ", $datetime);
+		$exs = explode("-", $exf[0]);
+
+		return $exs[2] . " " . $this->mounts_encode($exs[1]) . " " . $exs[0];
+	}
+	
 	public function datetime_encode($datetime)
 	{
 		$exf = explode(" ", $datetime);

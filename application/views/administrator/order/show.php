@@ -26,23 +26,23 @@
 						<table class="table table-striped">
                             <tr>
                                 <td class="text-right" width="20%"><b>NO RESI</b></td>
-                                <td width="1%"><b>:</b></td><td>#0192487</td>
+                                <td width="1%"><b>:</b></td><td>#<?=$show['resi']?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>PEMBELI</b></td>
-                                <td width="1%"><b>:</b></td><td>MISWANTO</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['nama_pelanggan'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>TELP</b></td>
-                                <td width="1%"><b>:</b></td><td>081329123456</td>
+                                <td width="1%"><b>:</b></td><td><?=$show['phone']?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>ALAMAT</b></td>
-                                <td width="1%"><b>:</b></td><td>ALAMAT</td>
+                                <td width="1%"><b>:</b></td><td><?=strtoupper($show['alamat'])?>,<br />KOTA <?=strtoupper($show['kota'])?>,<br />PROFINSI <?=strtoupper($show['profinsi'])?>, <br />KODE POS <?=strtoupper($show['kodepos'])?></td>
                             </tr>
                             <tr>
                                 <td class="text-right" width="20%"><b>KIRIM KE</b></td>
-                                <td width="1%"><b>:</b></td><td>KIRIM KE</td>
+                                <td width="1%"><b>:</b></td><td><?=$show['kirim_ke']?></td>
                             </tr>
                             <tr><td></td><td></td><td></td></tr>
                         </table>
@@ -55,17 +55,17 @@
                                 <tr>
                                     <th>KODE</th>
                                     <th>PRODUK</th>
-                                    <th>KATALOG</th>
                                     <th>QTY</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($this->orderdetail_model->where(['order_id' => $show['id_order']]) as $list) { ?>
                                 <tr>
-                                    <td>#109</td>
-                                    <td>KAOS POLOS</td>
-                                    <td>KAOS</td>
-                                    <td>1</td>
+                                    <td>#<?=$list['id_produk']?></td>
+                                    <td><?=strtoupper($list['nama_produk'])?></td>
+                                    <td><?=$list['qty']?></td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
 					</div>

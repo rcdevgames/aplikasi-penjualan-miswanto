@@ -49,7 +49,7 @@ Class Produk_model extends CI_Model {
         $this->db->update('produk', $data);
     }
 
-    public function delete() {
+    public function delete($id) {
         $this->db->where('id_produk', 
             $this->encrypt->decode(
                 urldecode(

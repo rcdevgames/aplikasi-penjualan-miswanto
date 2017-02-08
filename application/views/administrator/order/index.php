@@ -46,60 +46,35 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <?php foreach ($this->order_model->all() as $data) { ?>
                                 <tr>
-                                    <td class="text-center">#0192487</td>
-                                    <td>Miswanto</td>
-                                    <td class="text-center">081329000000</td>
-                                    <td class="text-right">Rp120.000</td>
+                                    <td class="text-center">#<?=$data['resi']?></td>
+                                    <td><?=strtoupper($data['nama_pelanggan'])?></td>
+                                    <td class="text-center"><?=$data['phone']?></td>
+                                    <td class="text-right"><?=$data['total_harga']?></td>
                                     <td class="text-center">
-                                        <span class="label label-warning">Baru</span>
+                                        <?php if ($data['status'] == 0) { ?>
+                                            <span class="label label-warning">Baru</span>
+                                        <?php } else if ($data['status'] == 1) { ?>
+                                            <span class="label label-info">Payout</span>
+                                        <?php } else { ?>
+                                            <span class="label label-success">Terkirim</span>
+                                        <?php } ?>
                                     </td>
-                                    <td class="text-center">03 JAN 2017</td>
+                                    <td class="text-center"><?=$this->dateid->date_encode($data['created_at'])?></td>
                                     <td class="text-center">
-                                        <a href="<?=base_url('/administrator/order/show/1.html')?>" class="btn btn-xs btn-default">
+                                        <a href="<?=base_url('/administrator/order/send_produk/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_orkonfirm']))).'.html')?>" class="btn btn-xs btn-info">
+                                            <i class="fa fa-upload"></i>
+                                        </a>
+                                        <a href="<?=base_url('/administrator/order/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_order']))).'.html')?>" class="btn btn-xs btn-default">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a href="" class="btn btn-xs btn-danger">
+                                        <a href="<?=base_url('/administrator/order/delete/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_order']))).'.html')?>" class="btn btn-xs btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">#1984687</td>
-                                    <td>Miswanto</td>
-                                    <td class="text-center">081329000000</td>
-                                    <td class="text-right">Rp120.000</td>
-                                    <td class="text-center">
-                                        <span class="label label-info">Payout</span>
-                                    </td>
-                                    <td class="text-center">03 JAN 2017</td>
-                                    <td class="text-center">
-                                        <a href="<?=base_url('/administrator/order/show/1.html')?>" class="btn btn-xs btn-default">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">#5837289</td>
-                                    <td>Miswanto</td>
-                                    <td class="text-center">081329000000</td>
-                                    <td class="text-right">Rp120.000</td>
-                                    <td class="text-center">
-                                        <span class="label label-success">Terkirim</span>
-                                    </td>
-                                    <td class="text-center">03 JAN 2017</td>
-                                    <td class="text-center">
-                                        <a href="<?=base_url('/administrator/order/show/1.html')?>" class="btn btn-xs btn-default">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
 					</div>

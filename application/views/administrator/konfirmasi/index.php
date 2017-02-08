@@ -46,22 +46,24 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <?php foreach ($this->orderkonfirm_model->all() as $data) { ?>
                                 <tr>
-                                    <td class="text-center">#0192487</td>
-                                    <td>TRANSFER</td>
-                                    <td>MANDIRI</td>
-                                    <td class="text-center">139198239192</td>
-                                    <td>Miswanto</td>
-                                    <td class="text-center">03 JAN 2017</td>
+                                    <td class="text-center">#<?$data['resi']?></td>
+                                    <td><?=strtoupper($data['metode'])?></td>
+                                    <td><?=strtoupper($data['tujuan'])?></td>
+                                    <td class="text-center"><?=strtoupper($data['rekening'])?></td>
+                                    <td><?=strtoupper($data['atasnama'])?></td>
+                                    <td class="text-center"><?=$this->dateid->date_encode($data['tanggal_tranfer'])?></td>
                                     <td class="text-center">
-                                        <a href="<?=base_url('/administrator/konfirmasi/show/1.html')?>" class="btn btn-xs btn-default">
+                                        <a href="<?=base_url('/administrator/konfirmasi/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_orkonfirm']))).'.html')?>" class="btn btn-xs btn-default">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a href="" class="btn btn-xs btn-danger">
+                                        <a href="<?=base_url('/administrator/konfirmasi/delete/'.str_replace('%', '_', urlencode($this->encrypt->encode($data['id_orkonfirm']))).'.html')?>" class="btn btn-xs btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
 					</div>
