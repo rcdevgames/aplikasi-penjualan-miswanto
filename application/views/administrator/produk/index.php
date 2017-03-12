@@ -44,6 +44,7 @@
                                     <th>KATALOG</th>
                                     <th>HARGA</th>
                                     <th>STATUS</th>
+                                    <th>DIPERBARUI PADA</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                     <th>KATALOG</th>
                                     <th>HARGA</th>
                                     <th>STATUS</th>
+                                    <th>DIPERBARUI PADA</th>
                                     <th></th>
                                 </tr>
                             </tfoot>
@@ -72,6 +74,7 @@
                                             <span class="label label-danger">Habis</span>
                                         <?php } ?>
                                     </td>
+                                    <td class="text-center"><?=$this->dateid->datetime_encode($val['created_at'])?></td>
                                     <td class="text-center">
                                         <a href="<?=base_url('/administrator/produk/show/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id_produk']))))?>" class="btn btn-xs btn-primary">
                                             <i class="fa fa-search"></i>

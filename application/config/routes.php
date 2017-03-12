@@ -16,6 +16,7 @@ $route['checkout'] = "/app/checkout";
 $route['checkout/detail_pembeli'] = "app/checkout_billing_details";
 $route['checkout/detail_pengiriman'] = "app/checkout_delivery_details";
 $route['checkout/detail_pesanan'] = "app/checkout_order_details";
+$route['checkout/selesai'] = "app/checkout_order_selesai";
 
 $route['detail_akun'] = "/app/my_account";
 $route['daftar_pemesanan'] = "app/order_list";

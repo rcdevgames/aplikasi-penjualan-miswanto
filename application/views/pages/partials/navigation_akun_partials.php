@@ -8,9 +8,6 @@
                 <a href="<?=base_url('/daftar_pemesanan.html')?>">DAFTAR PEMESANAN</a>
               </li>
               <li>
-                <a href="<?=base_url('/konfirmasi_pembayaran.html')?>">KONFIRMASI PEMBAYARAN</a>
-              </li>
-              <li>
                 <a href="<?=base_url('/ubah_akun.html')?>">UBAH PROFIL</a>
               </li>
               <li>

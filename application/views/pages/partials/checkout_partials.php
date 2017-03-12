@@ -11,6 +11,9 @@
                 <li>
                   <a href="<?=base_url('checkout/detail_pesanan')?>">DETAIL PEMESANAN</a>
                 </li>
+                <li>
+                  <a href="<?=base_url('checkout/selesai')?>">SELESAI</a>
+                </li>
               </ul>
             </div>
           </aside>

@@ -40,6 +40,15 @@ Class Order_model extends CI_Model {
         return $data->result_array();
     }
 
+    public function getToFinishOrder($id) {
+        $this->db->limit(1);
+        $this->db->order_by('id_order', 'DESC');
+        $this->db->where('pembeli_id', $id);
+        $this->db->join('pelanggan', 'id_pelanggan=pembeli_id');
+        $data = $this->db->get('order');
+        return $data->row_array();
+    }
+
     public function count_unread() {
         $this->db->where('status', '0');
         $data = $this->db->get('order');
