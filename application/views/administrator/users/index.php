@@ -21,9 +21,9 @@
                         <i class="fa fa-table"></i>
                         TABEL USERS
 
-                        <a href="<?=base_url('/administrator/users/add.html')?>" class="btn btn-primary pull-right">
+                        <!--<a href="<?=base_url('/administrator/users/add.html')?>" class="btn btn-primary pull-right">
                             <i class="fa fa-plus"></i> TAMBAH
-                        </a>
+                        </a>-->
                     </div>
 					<div class="panel-body">
                         <?php if ($this->session->flashdata('success')) { ?>
