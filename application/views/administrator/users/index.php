@@ -63,9 +63,9 @@
                                     <td><?=$this->dateid->datetime_encode($val['created_at'])?></td>
                                     <td class="text-center">
                                         <?php if ($val['id'] == 1) { ?>
-                                        <label class="label label-warning">
-                                            <i class="fa fa-exclamation-triangle"></i> WARNING!
-                                        </label>
+                                        <a href="<?=base_url('/administrator/users/edit/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id']))))?>" class="btn btn-default btn-xs">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
                                         <?php } else { ?>
                                         <a href="<?=base_url('/administrator/users/edit/'.str_replace('%', '_', urlencode($this->encrypt->encode($val['id']))))?>" class="btn btn-default btn-xs">
                                             <i class="fa fa-edit"></i>

@@ -16,7 +16,8 @@
                                 <div class="control-group">
                                     <label class="control-label"><span class="red">*</span> RESI PESANAN :</label>
                                     <div class="controls">
-                                        <b>#</b><input type="text" name="resi" value="<?=$_GET['resi']?>" class="input-xlarge">
+                                        <b>#</b><input type="text" name="resishow" value="<?=substr($_GET['resi'], 7, 3)?>" class="input-xlarge">
+                                        <input type="hidden" name="resi" value="<?=$_GET['resi']?>" class="input-xlarge">
                                     </div>
                                 </div>
                                 <div class="control-group">

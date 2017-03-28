@@ -8,19 +8,20 @@
                         <span class="maintext">BERANDA</span>
                     </h1>        
 
-                    <?php foreach ($this->order_model->where(['pembeli_id' => $this->session->userdata('id'), 'status' => '0']) as $order_beranda) { ?>
+                    <?php foreach ($this->order_model->where(['pembeli_id' => $this->session->userdata('id'), 'status' => '0', 'status' => '1']) as $order_beranda) { ?>
 
                         <div class="checkoutsteptitle">
                             PESAN PADA : <?= $this->dateid->date_encode($order_beranda['created_at']) ?> (TOTAL : Rp<?= $this->cart->format_number($order_beranda['total_harga']) ?>,-)
                             <a class="modify">
                                 RESI : <?= $order_beranda['resi'] ?>
                             </a>
-                            <a href="<?= base_url('/konfirmasi_pembayaran?resi=' . $order_beranda['resi']) ?>" class="modify">
-                                KONFIRMASI PEMBAYARAN
-                            </a>
                         </div>
                         <div class="checkoutstep">
                             <div class="cart-info">
+                                <a href="<?= base_url('/konfirmasi_pembayaran?resi=' . $order_beranda['resi']) ?>" class="btn btn-orange pull-right">
+                                    KONFIRMASI PEMBAYARAN
+                                </a>
+                                <br /><br />
                                 <table class="table table-striped table-bordered">
                                     <tr>
                                         <th class="image">GAMBAR</th>

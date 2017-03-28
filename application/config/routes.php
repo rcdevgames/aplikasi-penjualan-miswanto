@@ -35,6 +35,7 @@ $route['administrator/konfirmasi'] = "/administrator/konfirmasi";
 $route['administrator/pelanggan'] = "/administrator/pelanggan";
 $route['administrator/users'] = "/administrator/users";
 $route['administrator/pengaturan'] = "/administrator/pengaturan";
+$route['administrator/password'] = "/administrator/password";
 
 
 $route['administrator/login'] = "/administrator/login";

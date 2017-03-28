@@ -452,6 +452,10 @@ Class App extends CI_Controller {
                 'terbaca' => '0',
                 'created_at' => date('Y-m-d H:i:s')
             );
+
+            $getOrderData = $this->order_model->find_by_resi($resi);
+            $this->order_model->update(str_replace("%", "_", urlencode($this->encrypt->encode($getOrderData['id_order']))), ['status' => '2']);
+
             $this->orderkonfirm_model->create($data_array);
             $this->session->set_flashdata('success', 'Berhasil mengirim konfirmasi pembayaran');
             redirect('/konfirmasi_pembayaran');

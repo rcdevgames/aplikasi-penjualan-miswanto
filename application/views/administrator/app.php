@@ -90,6 +90,11 @@
 			</li>
 			
 			<li role="presentation" class="divider"></li>
+			<li <?php if ($navigation_active == "password") { echo 'class="active"'; } ?>>
+				<a href="<?=base_url('/administrator/password.html')?>">
+					<i class="fa fa-key"></i>&nbsp; UBAH PASSWORD
+				</a>
+			</li>
 			<li>
 				<a href="<?=base_url('/administrator/logout.html')?>">
 					<i class="fa fa-sign-out"></i>&nbsp; LOGOUT
