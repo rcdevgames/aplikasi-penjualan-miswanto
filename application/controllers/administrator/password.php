@@ -4,7 +4,7 @@ Class Password extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if (!$this->session->userdata('is_login')) {
+        if (!$this->session->userdata('administrator')['is_login']) {
             redirect("/administrator/login");
         }
     }
@@ -27,7 +27,7 @@ Class Password extends CI_Controller {
         $new_password = $this->input->post('new_password');
         $konfirm_password = $this->input->post('konfirm_password');
 
-        $getUserSession = $this->users_model->find(str_replace("%", "_", urlencode($this->session->userdata('id'))));
+        $getUserSession = $this->users_model->find(str_replace("%", "_", urlencode($this->session->userdata('administrator')['id'])));
         
         if (empty($old_password)) {
             $action = 0;
@@ -66,7 +66,7 @@ Class Password extends CI_Controller {
         }
 
         if ($action) {
-            $this->users_model->update(str_replace("%", "_", urlencode($this->session->userdata('id'))), ['password' => md5($new_password)]);
+            $this->users_model->update(str_replace("%", "_", urlencode($this->session->userdata('administrator')['id'])), ['password' => md5($new_password)]);
             $this->session->set_flashdata('success', 'Password Berhasil diubah');
             redirect('/administrator/password');
         }

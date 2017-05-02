@@ -4,7 +4,7 @@ Class Login extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if ($this->session->userdata('is_login')) {
+        if ($this->session->userdata('administrator')['is_login']) {
             redirect('/administrator/index');
         }
     }
@@ -23,12 +23,14 @@ Class Login extends CI_Controller {
 
         if ($data) {
             $data_session = array(
-                "id" => $this->encrypt->encode($data['id']),
-                "username" => $data['username'],
-                "nama" => $data['nama'],
-                "email" => $data['email'],
-                "phone" => $data['phone'],
-                "is_login" => true
+                "administrator" => array(
+                    "id" => $this->encrypt->encode($data['id']),
+                    "username" => $data['username'],
+                    "nama" => $data['nama'],
+                    "email" => $data['email'],
+                    "phone" => $data['phone'],
+                    "is_login" => true
+                )
             );
             $this->session->set_userdata($data_session);
             redirect('/administrator/index');

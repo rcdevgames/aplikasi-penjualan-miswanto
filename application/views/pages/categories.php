@@ -34,7 +34,11 @@
                                                     </div>
                                                     <div class="pricetag">
                                                         <span class="spiral"></span>
-                                                        <a href="" onclick="add_to_cart('<?= base_url('add_to_cart/' . str_replace("%", "_", urlencode($this->encrypt->encode($produk_katalog['id_produk'])))) ?>')" name="add_to_cart" class="productcart">ADD TO CART</a>
+                                                        <?php if ($produk_katalog['stok'] > 0) { ?>
+                                                            <a href="" onclick="add_to_cart('<?= base_url('add_to_cart/' . str_replace("%", "_", urlencode($this->encrypt->encode($produk_katalog['id_produk'])))) ?>')" name="add_to_cart" class="productcart">ADD TO CART</a>
+                                                        <?php } else { ?>
+                                                            <a href="#" style="background:#999;text-align:center;padding:8px 17.5px;float:right;font-size:13px;color:#FFF">OUT OF STOCK</a>
+                                                        <?php } ?>
                                                         <div class="price">
                                                             <div class="pricenew">Rp<?= $produk_katalog['harga_jual'] - ($produk_katalog['harga_jual'] * ($produk_katalog['harga_coret'] / 100)) ?></div>
                                                             <div class="priceold">Rp<?= $produk_katalog['harga_jual'] ?></div>

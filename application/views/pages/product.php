@@ -24,9 +24,15 @@
                                 <div class="productpageoldprice">HARGA ASLI : Rp<?= $find_produk['harga_jual'] ?></div>
                             </div>
                             <hr />
-                            <p><?= $find_produk['deskripsi'] ?></p>
+                            <p><?= $find_produk['deskripsi'] . $find_produk['stok']?></p>
                             <ul class="productpagecart">
-                                <li><a class="cart" href="" onclick="add_to_cart('<?= base_url('add_to_cart/' . str_replace("%", "_", urlencode($this->encrypt->encode($find_produk['id_produk'])))) ?>')">Add to Cart</a></li>
+                                <li>
+                                    <?php if ($find_produk['stok'] > 0) { ?>
+                                        <a class="cart" href="" onclick="add_to_cart('<?= base_url('add_to_cart/' . str_replace("%", "_", urlencode($this->encrypt->encode($find_produk['id_produk'])))) ?>')">Add to Cart</a>
+                                    <?php } else { ?>
+                                        <a href="#" style="background:#999;text-align:center;padding:15px 37.5px;float:right;font-size:18px;color:#FFF">OUT OF STOCK</a>
+                                    <?php } ?>
+                                </li>
                             </ul>
                         </div>
                     </div>

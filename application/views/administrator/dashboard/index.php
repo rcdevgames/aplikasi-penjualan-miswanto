@@ -9,7 +9,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">
                     <i class="fa fa-dashboard"></i>
-                    Selamat Datang <?=$this->session->userdata('nama')?>!!!
+                    Selamat Datang <?=$this->session->userdata('administrator')['nama']?>!!!
                 </h1>
 			</div>
 		</div><!--/.row-->

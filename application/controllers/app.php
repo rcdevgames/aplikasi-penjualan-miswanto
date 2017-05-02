@@ -639,7 +639,7 @@ Class App extends CI_Controller {
             redirect('/login');
         }
 
-        session_destroy();
+        $this->session->set_userdata(['is_login_customer' => false]);
         redirect("/login");
     }
 

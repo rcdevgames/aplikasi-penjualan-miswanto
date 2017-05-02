@@ -4,7 +4,7 @@ Class Order extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if (!$this->session->userdata('is_login')) {
+        if (!$this->session->userdata('administrator')['is_login']) {
             redirect("/administrator/login");
         }
     }
@@ -45,7 +45,7 @@ Class Order extends CI_Controller {
     public function delete($id) {
         $this->order_model->delete($id);
         $this->session->set_flashdata('success', "Berhasil menghapus data Order!!!");
-        redirect('/administrator/order.html');
+        redirect('/administrator/order');
     }
 
 }

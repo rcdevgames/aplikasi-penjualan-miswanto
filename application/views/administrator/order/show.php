@@ -21,8 +21,11 @@
 					<div class="panel-heading">
                         <i class="fa fa-desktop"></i>
                         DETAIL ORDER
+                        <button type="button" onclick="printPages('print-frames')" class="btn btn-primary pull-right">
+                            <i class="fa fa-print"></i> CETAK
+                        </button>
                     </div>
-					<div class="panel-body">
+					<div class="panel-body" id="print-frames">
 						<table class="table table-striped">
                             <tr>
                                 <td class="text-right" width="20%"><b>NO RESI</b></td>
@@ -72,3 +75,18 @@
 				</div>
 			</div>
 		</div><!--/.row-->
+
+        <textarea id="printing-css" style="display:none;">.no-print{display:none}</textarea>
+        <iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>
+        <script>
+            
+            function printPages(elementId) {
+                var a = document.getElementById('printing-css').value;
+                var b = document.getElementById(elementId).innerHTML;
+                window.frames["print_frame"].document.title = document.title;
+                window.frames["print_frame"].document.body.innerHTML = '<style>' + a + '</style>' + b;
+                window.frames["print_frame"].window.focus();
+                window.frames["print_frame"].window.print();
+            }
+
+        </script>

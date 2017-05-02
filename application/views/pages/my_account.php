@@ -6,9 +6,11 @@
                 <div class="span9">
                     <h1 class="heading1">
                         <span class="maintext">BERANDA</span>
-                    </h1>        
-
-                    <?php foreach ($this->order_model->where(['pembeli_id' => $this->session->userdata('id'), 'status' => '0', 'status' => '1']) as $order_beranda) { ?>
+                    </h1>
+                    <?php foreach ($this->order_model->where([
+                            'pembeli_id' => $this->session->userdata('id'), 
+                            'status !=' => '2'
+                        ]) as $order_beranda) { ?>
 
                         <div class="checkoutsteptitle">
                             PESAN PADA : <?= $this->dateid->date_encode($order_beranda['created_at']) ?> (TOTAL : Rp<?= $this->cart->format_number($order_beranda['total_harga']) ?>,-)
