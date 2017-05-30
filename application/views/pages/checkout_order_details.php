@@ -17,7 +17,6 @@
                   <th class="quantity">QTY</th>
                     <th class="total">ACTION</th>
                   <th class="price">HARGA</th>
-                  <th class="total">SUBTOTAL</th>
                 
                 </tr>
                 <?php foreach ($this->cart->contents() as $itemCart) { ?>
@@ -41,7 +40,6 @@
                     </a>
                   </td>
                   <td class="price">Rp<?=$this->cart->format_number($itemCart['price'])?></td>
-                  <td class="total">Rp<?=$this->cart->format_number($itemCart['subtotal'])?></td>
                 </tr>
                 <?php } ?>
               </table>

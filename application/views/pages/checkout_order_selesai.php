@@ -46,7 +46,6 @@
                             <th class="name">PRODAK NAMA</th>
                             <th class="quantity">QTY</th>
                             <th class="price">HARGA</th>
-                            <th class="total">SUBTOTAL</th>
                           </tr>
                           <?php foreach ($this->orderdetail_model->where(["order_id" => $orderFinish['id_order']]) as $itemOrder) { ?>
                             <tr>
@@ -56,7 +55,6 @@
                               <td  class="name"><?=$itemOrder['nama_produk']?></td>
                               <td class="quantity"><?=$itemOrder['qty']?></td>
                               <td class="price">Rp<?=$this->cart->format_number($itemOrder['produk_harga'])?></td>
-                              <td class="total">Rp<?=$this->cart->format_number($itemOrder['subtotal'])?></td>
                             </tr>
                           <?php } ?>
                       </table>

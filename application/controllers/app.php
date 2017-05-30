@@ -302,10 +302,13 @@ Class App extends CI_Controller {
     }
 
     public function action_checkout_order() {
+        $resi = time();
+        $substr = substr($resi, 0, 3);
+        $totel_harga = $this->cart->total() + (int)$substr;
         $data_order = array(
-            'resi' => time(),
+            'resi' => $resi,
             'pembeli_id' => $this->session->userdata('customer_checkout')['id'],
-            'total_harga' => $this->cart->total(),
+            'total_harga' => $totel_harga,
             'status' => '0',
             'kirim_ke' => $this->session->userdata('customer_checkout')['kirim_ke'],
             'terbaca' => '0',
