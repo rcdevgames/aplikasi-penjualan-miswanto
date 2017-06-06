@@ -303,7 +303,8 @@ Class App extends CI_Controller {
 
     public function action_checkout_order() {
         $resi = time();
-        $substr = substr($resi, 0, 3);
+        $strln = strlen($resi) - 3;
+        $substr = substr($resi, $strln, 3);
         $totel_harga = $this->cart->total() + (int)$substr;
         $data_order = array(
             'resi' => $resi,
